@@ -139,6 +139,7 @@ IE条件注释（IE10已不支持条件注释）
 ```html
 /* 不推荐 */
 document.write("我们是前端攻城狮！")
+
 /* 推荐 */
 document.write("\u6211\u4eec\u662f\u524d\u7aef\u653b\u57ce\u72ee\uff01")
 ```
@@ -166,6 +167,7 @@ document.write("\u6211\u4eec\u662f\u524d\u7aef\u653b\u57ce\u72ee\uff01")
 ```html
 <!--不推荐-->
 <a target="_blank" href="/site/">more >></a>
+
 <!--推荐-->
 <a target="_blank" href="/site/">more &gt;&gt;</a>
 ```
@@ -178,10 +180,14 @@ HTML 实例列表见看这里：[Character Entity Reference Chart](https://dev.w
 
 ```html
 <!--不推荐-->
-<a><p> </p><div></div><p> </p></a>  <h2><div></div></h2>
+<a><p></p><div></div><p></p></a>
+<h2><div></div></h2>
+
 <!--推荐-->
-<p><span><span> </span></span></p>
-<h2><span> </span></h2>
+<p>
+    <span><span></span></span>
+</p>
+<h2><span></span></h2>
 ```
 
 ## CSS 规范
