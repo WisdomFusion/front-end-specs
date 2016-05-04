@@ -4,11 +4,28 @@
 
 ## Gulp.js
 
+## Grunt
+
 ## Sass
 
 ## Less
 
+## Bootstrap
 
+## JavaScript
 
+* JavaScript
+
+* jQuery
+
+* zepto.js
+
+* AngularJS
+
+## Editor
+
+* Sublime Text
+
+* WebStorm
 
 
