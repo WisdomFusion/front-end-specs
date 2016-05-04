@@ -176,11 +176,11 @@ var THINGS_TO_EAT = [apples, oysters, sprayOnCheese]  // 缺少分号.
 
 这样写会造成什么后果？ 
 
-例1：JavaScript 错误 - 首先，原本是定义一个返回42的函数，变成了立即执行，并且把第二个函数当成了调用第一个函数的参数，然后42这个数字被当成一个函数返回并被调用，引发了错误。
+* 例1：JavaScript 错误 - 首先，原本是定义一个返回42的函数，变成了立即执行，并且把第二个函数当成了调用第一个函数的参数，然后42这个数字被当成一个函数返回并被调用，引发了错误。
 
-例2：你最有可能看到的是代码执行的时候报“no such property in undefined”的错误，因为它会尝试执行x[ffVersion]isIE，而x[ffVersion]是未定义的。
+* 例2：你最有可能看到的是代码执行的时候报“no such property in undefined”的错误，因为它会尝试执行x[ffVersion]isIE，而x[ffVersion]是未定义的。
 
-例3：函数die()只有在resultOfOperation()的结果不为数字的时候才会被执行（预期是不为-1就执行），而THINGSTOEAT则被赋值为die()的执行结果（原本应该是个数组）。
+* 例3：函数die()只有在resultOfOperation()的结果不为数字的时候才会被执行（预期是不为-1就执行），而THINGSTOEAT则被赋值为die()的执行结果（原本应该是个数组）。
 
 为什么会这样呢？
 
