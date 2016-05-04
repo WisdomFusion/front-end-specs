@@ -82,11 +82,7 @@
 * 使用间隔符 `-` 进行连接。
 * 一般背景图片以 `bg-` 开头，按钮图片以 `btn-` 开头，图标图片以 `icon-` 开头，聚合图以 `spr-` 开头，后跟英文单词，不推荐使用汉语拼音，如果名称过长，适当使用缩写。
 
-    bg-body.jpg
-    spr-home.png
-    img-promo.jpg
-    btn-submit.png
-    icon-game.png
+如：bg-body.jpg, spr-home.png, img-promo.jpg, btn-submit.png, icon-game.png
 
 ### 注释
 
