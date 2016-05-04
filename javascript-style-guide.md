@@ -233,12 +233,12 @@ function doSomething() {
  * 这是一个有调用参数和返回值的函数
  * 注释里要用@param和@return分别标注参数和返回值
  *
- * @param {number} idx 每次执行时当前元素在数组中的索引
+ * @param {number} index 每次执行时当前元素在数组中的索引
  * @param {object} dom 当前循环到的元素
  * @return {string} 每次循环时返回当前元素的id
  */
-$.each = function(idx, dom) {
-    if(dom = this[idx]) {
+$.each = function(index, dom) {
+    if(dom = this[index]) {
         return dom.id;
     } else {
         return '';
@@ -250,7 +250,7 @@ $.each = function(idx, dom) {
 
 **eval 函数（魔鬼）**
 
-`eval()` 不但混淆语境还很危险，总会有比这更好、更清晰、更安全的另一种方案来写你的代码，因此尽量不要使用 evil 函数。
+`eval()` 不但混淆语境还很危险，总会有比这更好、更清晰、更安全的另一种方案来写你的代码，因此尽量不要使用 eval 函数。
 
 **this 关键字**
 
