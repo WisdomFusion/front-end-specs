@@ -256,7 +256,7 @@ ID在一个页面中的唯一性导致了如果以 ID 为选择器来写 CSS，�
 
 * [Normalize.css](http://necolas.github.io/normalize.css/)
 
-  今后使用 Normalize.css，这也是 Bootstrap 使用的 Reset。
+  今后统一使用 Normalize.css，这也是 Bootstrap 使用的 Reset。
 
 
 ### 代码风格
@@ -413,7 +413,7 @@ selectors { margin:0px; padding:0px; }
 selectors { margin:0; padding:0; }
 ```
 
-### 删除无用CSS样式
+**删除无用CSS样式**
 
 ```css
 /* 不推荐 */
