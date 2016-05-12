@@ -31,26 +31,17 @@
 <meta charset="utf-8">
 ```
 
-**页面语言 lang 使用 zh-Hans-CN**
+**页面语言 lang 使用 `zh-CN`**
+
+根据 HTML5 规范：
+
+    强烈建议为 html 根元素指定 lang 属性，从而为文档设置正确的语言。这将有助于语音合成工具确定其所应该采用的发音，有助于翻译工具确定其翻译时所应遵守的规则等等。
 
 ```html
-<html lang="zh-Hans-CN">
+<html lang="zh-CN">
+    <!-- ... -->
+</html>
 ```
-
-`zh` 和 `zh-CN` 均属于废弃用法。 与中文有关的 `lang` 值如下：
-
-* `zh-Hans` 简体中文
-* `zh-Hans-CN` 大陆地区使用的简体中文
-* `zh-Hans-HK` 香港地区使用的简体中文
-* `zh-Hans-MO` 澳门使用的简体中文
-* `zh-Hans-SG` 新加坡使用的简体中文
-* `zh-Hans-TW` 台湾使用的简体中文
-* `zh-Hant` 繁体中文
-* `zh-Hant-CN` 大陆地区使用的繁体中文
-* `zh-Hant-HK` 香港地区使用的繁体中文
-* `zh-Hant-MO` 澳门使用的繁体中文
-* `zh-Hant-SG` 新加坡使用的繁体中文
-* `zh-Hant-TW` 台湾使用的繁体中文
 
 ### 2.2 文件命名
 
