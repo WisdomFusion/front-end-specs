@@ -1,10 +1,10 @@
 # HTML/CSS Sytle Guide - HTML/CSS 编码规范
 
-## 简介
+## 1. 简介
 
-## HTML 规范
+## 2. HTML 规范
 
-### 代码规范
+### 2.1 代码规范
 
 **所有 HTML 标签都小写**
 
@@ -50,7 +50,7 @@
 * `zh-Hant-SG` 新加坡使用的繁体中文
 * `zh-Hant-TW` 台湾使用的繁体中文
 
-### 文件命名
+### 2.2 文件命名
 
 文件扩展名必须为 `.htm` 或 `.html`，PHP 框架模板除外：
 
@@ -65,7 +65,7 @@
 * 文件名区分大小写，统一使用**小写字母**
 * 为更好的表达语义，文件名使用英文名词命名，或英文简写。
 
-### 图片
+### 2.3 图片
 
 **图片格式/大小**
 
@@ -84,7 +84,7 @@
 
 如：bg-body.jpg, spr-home.png, btn-submit.png, icon-game.png
 
-### 注释
+### 2.4 注释
 
 **正确的注释规范**
 
@@ -93,14 +93,14 @@
 
 例如下面的代码是错误的:
 
-```html
+```
 <!--这里是注释     -这里是注释-->
 <!--    -这里是注释     -这里是注释    --->
 ```
 
 用等号或者空格替换内部的虚线,这样是正确的
 
-```html
+```
 <!--这里是注释============这里是注释-->
 ```
 
@@ -128,7 +128,7 @@ IE条件注释（IE10 已不支持条件注释）
 <![endif]-->
 ```
 
-### 脚本中文转 Unicode
+### 2.5 脚本中文转 Unicode
 
 为防止外链脚本未申明正确编码导致乱码的问题，脚本中如用到中文，必须转为 Unicode 编码
 
@@ -140,23 +140,53 @@ document.write("我们是前端攻城狮！")
 document.write("\u6211\u4eec\u662f\u524d\u7aef\u653b\u57ce\u72ee\uff01")
 ```
 
-### 去掉类型属性
+### 2.6 属性
 
-不要为 CSS、JavaScript 使用类型属性，特别说明类型（type）属性是多余的，在 HTML5 中默认已包含
+**属性顺序**
+
+HTML 属性应当按照以下给出的顺序依次排列，确保代码的易读性。
+
+* `class`
+* `id`, `name`
+* `data-*`
+* `src`, `for`, `type`, `href`
+* `title`, `alt`
+* `aria-*`, `role`
+
+`class` 用于标识高度可复用组件，因此应该排在首位。`id` 用于标识具体组件，应当谨慎使用（例如，页面内的书签），因此排在第二位。
+
+**去掉类型属性**
+
+根据 HTML5 规范，在引入 CSS 和 JavaScript 文件时一般不需要指定 type 属性，因为 text/css 和 text/javascript 分别是它们的默认值。
 
 ```html
-<!--不推荐-->
-<link href="../css/comm.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript"><!--mce:0--></script>
-<script src="common.js" type="text/javascript">
+<!-- External CSS -->
+<link rel="stylesheet" href="code-guide.css">
 
-<!--推荐-->
-<link href="../css/comm.css" rel="stylesheet" />
-<script type="text/javascript"><!--mce:1--></script>
-<script src="common.js">
+<!-- In-document CSS -->
+<style>
+  /* ... */
+</style>
+
+<!-- JavaScript -->
+<script src="code-guide.js"></script>
 ```
 
-### 对“<”“>”之类的符号进行实体转义
+**布尔（boolean）型属性**
+
+布尔型属性可以在声明时不赋值。XHTML 规范要求为其赋值，但是 HTML5 规范不需要。
+
+更多信息请参考 [WhatWG section on boolean attributes](http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#boolean-attributes)：
+
+元素的布尔型属性如果有值，就是 `true`，如果没有值，就是 `false`。
+
+如果一定要为其赋值的话，请参考 WhatWG 规范：
+
+如果属性存在，其值必须是空字符串或 `[...]` 属性的规范名称，并且不要再收尾添加空白符。
+
+简单来说，就是不用赋值。
+
+### 2.7 对“<”“>”之类的符号进行实体转义
 
 在 HTML 中不能使用小于号（`<`）和大于号（`>`），这是因为浏览器会误认为它们是标签。如果希望正确地显示预留字符，我们必须在 HTML 源代码中使用字符实体（Character Entities）
 
@@ -170,7 +200,21 @@ document.write("\u6211\u4eec\u662f\u524d\u7aef\u653b\u57ce\u72ee\uff01")
 
 HTML 实例列表见看这里：[Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
 
-### 元素嵌套规范
+### 2.8 减少标签的数量
+
+编写 HTML 代码时，尽量避免多余的父元素。很多时候，这需要迭代和重构来实现。请看下面的案例：
+
+```html
+<!-- 不推荐 -->
+<span class="avatar">
+  <img src="...">
+</span>
+
+<!-- 推荐 -->
+<img class="avatar" src="...">
+```
+
+### 2.9 元素嵌套规范
 
 段落元素与标题元素只能嵌套内联元素
 
@@ -186,9 +230,9 @@ HTML 实例列表见看这里：[Character Entity Reference Chart](https://dev.w
 <h2><span></span></h2>
 ```
 
-## CSS 规范
+## 3. CSS 规范
 
-### 命名规范
+### 3.1 命名规范
 
 **使用类选择器，尽量避免使用ID选择器定义样式**
 
@@ -221,11 +265,9 @@ ID在一个页面中的唯一性导致了如果以 ID 为选择器来写 CSS，�
 链接样式：`link.css`
 打印样式：`print.css`
 
-### 常用类/ID命名举列
+### 3.2 常用类/ID命名举列
 
-常用类的命名应尽量以常见英文单词为准，做到通俗易懂，并在适当的地方加以注释。
-
-部分命名解释约定：
+常用类的命名应尽量以常见英文单词为准，做到通俗易懂，并在适当的地方加以注释。class 名称中只能出现小写字符和 `-`（不是下划线，也不是驼峰命名法）。破折号应当用于相关 class 的命名，部分命名及前缀参考下表：
 
 | 名称       | 类名       | 名称     | 类名        |
 |------------|------------|----------|-------------|
@@ -242,9 +284,9 @@ ID在一个页面中的唯一性导致了如果以 ID 为选择器来写 CSS，�
 | 视频       | .video-... | 联系     | .contact    |
 | 地址       | .address   | 表单     | .frm-...    |
 
-可以多看看如 Bootstrap 之类的前端框架里的 CSS 类命名。
+在为 Sass 和 Less 变量命名是也可以参考上面列出的各项规范，因为它们最终也是要编译为 CSS 的，可以多看看如 Bootstrap 之类的前端框架里的 CSS 类命名。
 
-### CSS Reset
+### 3.3 CSS Reset
 
 * [Eric Meyer's "Reset CSS" 2.0](http://cssreset.com/scripts/eric-meyer-reset-css/)
   
@@ -254,8 +296,7 @@ ID在一个页面中的唯一性导致了如果以 ID 为选择器来写 CSS，�
 
   今后统一使用 Normalize.css，这也是 Bootstrap 使用的 Reset。
 
-
-### 代码风格
+### 3.4 代码风格
 
 **CSS 属性值需要用到引号时，统一使用单引号**
 
@@ -280,24 +321,51 @@ selectors { font-family:'\5FAE\8F6F\96C5\9ED1'; }
 .nav { }
 ```
 
-### CSS 属性书写顺序
+**CSS 属性书写顺序**
 
-建议遵循：布局定位属性、自身属性、文本属性、其他属性、CSS3属性。
+相关的属性声明应当归为一组，并按照下面的顺序排列：
+
+- Positioning
+- Box model
+- Typographic
+- Visual
+
+由于定位（positioning）可以从正常的文档流中移除元素，并且还能覆盖盒模型（box model）相关的样式，因此排在首位。盒模型排在第二位，因为它决定了组件的尺寸和位置。
+
+其他属性只是影响组件的内部（inside）或者是不影响前两组属性，因此排在后面。
+
+完整的属性列表及其排列顺序请参考 [Recess](http://twitter.github.com/recess)。
 
 ```css
-/* 这些属性只是最常用到的, 并不代表全部 */
+.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 
-/* 布局定位属性 */
-display / list-style / position (top,right,bottom,left) / float / clear / visibility / overflow
+  /* Box-model */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
 
-/* 自身属性 */
-width / height / margin / padding / border / background
+  /* Typography */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  text-align: center;
 
-/* 文本属性 */
-color / font / text-decoration / text-align / vertical-align / white- space / break-word
+  /* Visual */
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
 
-/* 其他（CSS3）  */
-content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient ...
+  /* Misc */
+  opacity: 1;
+}
 ```
 
 **CSS 浏览器私有前缀书写格式**
@@ -314,11 +382,30 @@ selectors {
 }
 ```
 
+**选择器**
+
+- 对于通用元素使用 class ，这样利于渲染性能的优化。
+- 对于经常出现的组件，避免使用属性选择器（例如，`[class^="..."]`），浏览器的性能会受到这些因素的影响。
+- 选择器要尽可能短，并且尽量限制组成选择器的元素个数，建议不要超过 3 。
+- 只有在必要的时候才将 `class` 限制在最近的父元素内（也就是后代选择器 `>`）。
+
+```css
+/* 不推荐 */
+span { ... }
+.page-container #stream .stream-item .tweet .tweet-header .username { ... }
+.avatar { ... }
+
+/* 推荐 */
+.avatar { ... }
+.tweet-header .username { ... }
+.tweet .avatar { ... }
+```
+
 **不要以没有语义的标签作为选择器**
 
 ```css
 /* 不推荐 */
-.m-xxx div{ ... }
+.m-xxx div { ... }
 ```
 
 **CSS 单行书写法（根据个人习惯选择）**
@@ -338,7 +425,7 @@ selectors{
 }
 ```
 
-### 注释
+### 3.5 注释
 
 **行间注释**
 
@@ -365,7 +452,14 @@ selectors{
 .news { /*line-height:1.5 这里是高度自动撑*/ }
 ```
 
-### Hack
+### 3.6 不要使用 `@import`
+
+与 `<link>` 标签相比，`@import` 指令要慢很多，不光增加了额外的请求次数，还会导致不可预料的问题。替代办法有以下几种：
+
+- 使用多个 `<link>` 元素
+- 通过 Sass 或 Less 类似的 CSS 预处理器将多个 CSS 文件编译为一个文件
+
+### 3.7 Hack
 
 * **原则上不允许使用Hack！**
 * 很多不兼容问题可以通过改变方法和思路来解决，并非一定需要 Hack，根据经验你完全可以绕过某些兼容问题。
@@ -387,14 +481,40 @@ selectors{
 @-moz-document url-prefix(){ .element { color:#f1f1f1; } } /*Firefox*/
 ```
 
-**简写 CSS 颜色属性值**
+### 3.8 优化
+
+**简写形式的属性声明**
+
+在需要显示地设置所有值的情况下，应当尽量限制使用简写形式的属性声明。常见的滥用简写属性声明的情况如下：
+
+- padding
+- nmargin
+- font
+- background
+- border
+- border-radius
+
+大部分情况下，我们不需要为简写形式的属性声明指定所有值。例如，HTML 的 heading 元素只需要设置上、下边距（margin）的值，因此，在必要的时候，只需覆盖这两个值就可以。过度使用简写形式的属性声明会导致代码混乱，并且会对属性值带来不必要的覆盖从而引起意外的副作用。
+
+MDN（Mozilla Developer Network）上一片非常好的关于 [shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) 的文章，对于不太熟悉简写属性声明及其行为的用户很有用。
 
 ```css
 /* 不推荐 */
-selectors { color:#000000; background-color:#ddeeff; }
+.element {
+  margin: 0 0 10px;
+  background: red;
+  background: url("image.jpg");
+  border-radius: 3px 3px 0 0;
+}
 
 /* 推荐 */
-selectors { color:#000; background-color:#def; }
+.element {
+  margin-bottom: 10px;
+  background-color: red;
+  background-image: url("image.jpg");
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
 ```
 
 **删除 CSS 属性值为 0 的单位**
@@ -421,3 +541,23 @@ selectors { font-size:12px; }
 selectors { font-size:12px; }
 .nav-item { height:20px; }
 ```
+### 3.9 Less 和 Sass 中的嵌套
+
+避免非必要的嵌套。这是因为虽然你可以使用嵌套，但是并不意味着应该使用嵌套。只有在必须将样式限制在父元素内（也就是后代选择器），并且存在多个需要嵌套的元素时才使用嵌套。
+
+```css
+// Without nesting
+.table > thead > tr > th { … }
+.table > thead > tr > td { … }
+
+// With nesting
+.table > thead > tr {
+  > th { … }
+  > td { … }
+}
+```
+
+## 4. Bootstrap 相关
+
+
+
