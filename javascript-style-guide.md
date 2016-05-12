@@ -248,9 +248,11 @@ $.each = function(index, dom) {
 
 ## 5. 技巧和实践
 
-**eval 函数（魔鬼）**
+**eval 函数**
 
 `eval()` 不但混淆语境还很危险，总会有比这更好、更清晰、更安全的另一种方案来写你的代码，因此尽量不要使用 eval 函数。
+
+eval is evil.
 
 **this 关键字**
 
